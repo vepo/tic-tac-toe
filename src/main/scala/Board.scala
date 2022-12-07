@@ -7,6 +7,8 @@ enum BoardChoice:
   case Player1, Player2, None
 
 
+def swapPlayer(p1: BoardChoice): BoardChoice = if p1 == BoardChoice.Player1 then BoardChoice.Player2 else BoardChoice.Player1
+
 val WinnerPositions = Array((0, 1, 2), 
                             (3, 4, 5), 
                             (6, 7, 8), 
@@ -49,7 +51,7 @@ class Board(val positions: Array[BoardChoice] = Array.fill(9) { BoardChoice.None
                                                                    .isEmpty && 
                                                               this.availableChoices()
                                                                   .map(c => this.choice(c, turn))
-                                                                  .exists(b => b.canFinish(if turn == BoardChoice.Player1 then BoardChoice.Player1 else BoardChoice.Player1)))
+                                                                  .exists(b => b.canFinish(swapPlayer(turn))))
 
   /**
    * @return true if the board has a winner, false otherwise

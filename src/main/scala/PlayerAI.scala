@@ -5,7 +5,7 @@ def randomMovementSelection(board: Board): (Int, Int) = Random.shuffle(board.ava
 
 def dummyMovementSelection(board: Board): (Int, Int) = board.availableChoices().head
 
-def board_heuristic(board: Board, deep: Int): Float = {
+def boardHeuristic(board: Board, deep: Int): Float = {
     if (board.hasWinner() && board.winner() == BoardChoice.Player2) then
         +10f / deep
     else if (board.hasWinner() && board.winner() == BoardChoice.Player1) then
@@ -16,7 +16,7 @@ def board_heuristic(board: Board, deep: Int): Float = {
 
 def minimax(board: Board, deep: Int, max: Boolean): Float = {
     if board.hasWinner() then
-        board_heuristic(board, deep)
+        boardHeuristic(board, deep)
     else if board.availableChoices().isEmpty then
         0f
     else if max then
