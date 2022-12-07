@@ -70,7 +70,8 @@ def computerPositionSupplier(ai: (Board => (Int, Int))): (Board => (Int, Int)) =
   choice
 }
 
-def userPositionSupplier(board:Board): (Int, Int) = {  
+def userPositionSupplier(board: Board): (Int, Int) = {
+  board.show()
   println()
   print("[YOU] Insert your choice (type \"x,y\"): ")
   val coordinates = readLine().split(",")
